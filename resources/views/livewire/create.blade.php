@@ -1,5 +1,5 @@
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-	Create  
+	Create
 </button>
 
 <!-- Modal -->
@@ -23,6 +23,11 @@
                         <label for="exampleFormControlInput2">Email address</label>
                         <input type="email" class="form-control" id="exampleFormControlInput2" wire:model="email" placeholder="Enter Email">
                         @error('email') <span class="text-danger error">{{ $message }}</span>@enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput3">Role</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput3" wire:model="role" placeholder="Enter Role">
+                        @error('role') <span class="text-danger error">{{ $message }}</span>@enderror
                     </div>
                 </form>
             </div>

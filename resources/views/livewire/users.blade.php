@@ -12,12 +12,13 @@
         <!-- /.card-header -->
         <div class="card-body">
             @include('livewire.components.paginate')
-            <table id="example1" class="table table-bordered table-striped">
+            <table id="example1" class="table table-bordered table-striped sm">
                 <thead>
                     <tr>
                         <th>No.</th>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Role</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -28,6 +29,7 @@
                             <td>{{ $no++ }}</td>
                             <td>{{ $value->name }}</td>
                             <td>{{ $value->email }}</td>
+                            <td>{{ $value->role }}</td>
                             <td>
                                 <button data-toggle="modal" data-target="#updateModal"
                                     wire:click="edit({{ $value->id }})" class="btn btn-primary btn-sm">Edit</button>

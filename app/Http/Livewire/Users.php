@@ -10,7 +10,7 @@ class Users extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
-    public $name, $email, $password, $user_id;
+    public $name, $email, $password, $user_id , $role;
     public $updateMode = false;
     public $paginate = 5;
     public function render()
@@ -18,7 +18,7 @@ class Users extends Component
         $users = User::latest()->paginate($this->paginate);
         return view('livewire.users', compact('users'));
     }
-    public function peringatan($message)
+    public function peringatan  ($message)
     {
         $this->alert('success', $message, [
             'position' =>  'top-end',
@@ -35,6 +35,7 @@ class Users extends Component
     {
         $this->name = '';
         $this->email = '';
+        $this->role = '';
     }
 
     public function store()
@@ -42,6 +43,7 @@ class Users extends Component
         $validatedDate = $this->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
+            'role' => 'required',
         ]);
         $validatedDate['password'] = bcrypt('password');
         User::create($validatedDate);
@@ -60,6 +62,7 @@ class Users extends Component
         $this->user_id = $id;
         $this->name = $user->name;
         $this->email = $user->email;
+        $this->role = $user->role;
     }
 
     public function cancel()
