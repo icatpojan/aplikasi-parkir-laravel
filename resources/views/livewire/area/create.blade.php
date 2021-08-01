@@ -7,7 +7,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">AREA</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                      <span aria-hidden="true close-btn">×</span>
                 </button>
@@ -16,18 +16,8 @@
                 <form>
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Name</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Name" wire:model="name">
-                        @error('name') <span class="text-danger error">{{ $message }}</span>@enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlInput2">Email address</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput2" wire:model="email" placeholder="Enter Email">
-                        @error('email') <span class="text-danger error">{{ $message }}</span>@enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlInput3">Role</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput3" wire:model="role" placeholder="Enter Role">
-                        @error('role') <span class="text-danger error">{{ $message }}</span>@enderror
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Name" wire:model="nama_tempat">
+                        @error('nama_tempat') <span class="text-danger error">{{ $message }}</span>@enderror
                     </div>
                 </form>
             </div>

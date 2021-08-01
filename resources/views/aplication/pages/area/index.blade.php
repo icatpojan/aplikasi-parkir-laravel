@@ -13,19 +13,19 @@
                 <div class="card">
                     <!-- /.card-header -->
                     <div class="card-body">
-                        @livewire('users')
+                        @livewire('areas')
                     </div>
                     <!-- /.card-body -->
                 </div>
             </div>
         </div>
     </div>
-    @include('aplication.components.modal.user')
+    {{-- @include('aplication.components.modal.user') --}}
 @endsection
 
 @section('script')
     <script type="text/javascript">
-        window.livewire.on('userStore', () => {
+        window.livewire.on('areaStore', () => {
             $('#exampleModal').modal('hide');
         });
     </script>

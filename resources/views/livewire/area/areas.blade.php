@@ -1,5 +1,5 @@
 <div>
-    @include('livewire.update')
+    @include('livewire.area.update')
     @if (session()->has('message'))
         <div class="alert alert-success" style="margin-top:30px;">x
             {{ session('message') }}
@@ -7,29 +7,25 @@
     @endif
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">@include('livewire.create')</h3>
+            <h3 class="card-title">@include('livewire.area.create')</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
             @include('livewire.components.paginate')
-            <table id="example1" class="table table-bordered table-striped sm">
+            <table class="table table-bordered table-striped sm">
                 <thead>
                     <tr>
                         <th>No.</th>
                         <th>Name</th>
-                        <th>Email</th>
-                        <th>Role</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php $no = 1; ?>
-                    @foreach ($users as $value)
+                    @foreach ($areas as $value)
                         <tr>
                             <td>{{ $no++ }}</td>
-                            <td>{{ $value->name }}</td>
-                            <td>{{ $value->email }}</td>
-                            <td>{{ $value->role }}</td>
+                            <td>{{ $value->nama_tempat }}</td>
                             <td>
                                 <button data-toggle="modal" data-target="#updateModal"
                                     wire:click="edit({{ $value->id }})" class="btn btn-primary btn-sm">Edit</button>
@@ -41,7 +37,7 @@
                 </tbody>
             </table>
             <div class="mt-2">
-                {{ $users->links() }}
+                {{ $areas->links() }}
             </div>
         </div>
     </div>

@@ -13,7 +13,7 @@
                 <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div> --}}
             <div class="info">
-                <a href="{{route('home')}}" class="d-block">IRSYAD FAUZAN</a>
+                <a href="{{ route('home') }}" class="d-block">IRSYAD FAUZAN</a>
             </div>
         </div>
 
@@ -24,19 +24,27 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="{{route('user.index')}}" class="nav-link">
-                        <i class="nav-icon far fa-image"></i>
+                    <a href="{{ route('user.index') }}" class="nav-link">
+                        <i class="nav-icon far fa-user"></i>
                         <p>
                             User
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('customer.index')}}" class="nav-link">
+                    <a href="{{ route('area.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-car"></i>
+                        <p>
+                            Area
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('customer.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Customer
-                            <span class="right badge badge-danger">New</span>
+                            {{-- <span class="right badge badge-danger">New</span> --}}
                         </p>
                     </a>
                 </li>

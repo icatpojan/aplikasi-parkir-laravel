@@ -3,20 +3,20 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\User;
+use App\Area;
 use Livewire\WithPagination;
 
-class Users extends Component
+class Areas extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
-    public $name, $email, $password, $user_id , $role;
+    public $nama_tempat, $area_id;
     public $updateMode = false;
     public $paginate = 5;
     public function render()
     {
-        $users = User::latest()->paginate($this->paginate);
-        return view('livewire.user.users', compact('users'));
+        $areas = Area::latest()->paginate($this->paginate);
+        return view('livewire.area.areas', compact('areas'));
     }
     public function peringatan  ($message)
     {
@@ -33,36 +33,29 @@ class Users extends Component
     }
     private function resetInputFields()
     {
-        $this->name = '';
-        $this->email = '';
-        $this->role = '';
+        $this->nama_tempat = '';
     }
 
     public function store()
     {
         $validatedDate = $this->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'role' => 'required',
+            'nama_tempat' => 'required',
         ]);
-        $validatedDate['password'] = bcrypt('password');
-        User::create($validatedDate);
+        area::create($validatedDate);
 
-        $this->peringatan('berhasil menambah user');
+        $this->peringatan('berhasil menambah area');
         $this->resetInputFields();
 
-        $this->emit('userStore'); // Close model to using to jquery
+        $this->emit('areaStore'); // Close model to using to jquery
 
     }
 
     public function edit($id)
     {
         $this->updateMode = true;
-        $user = User::where('id', $id)->first();
-        $this->user_id = $id;
-        $this->name = $user->name;
-        $this->email = $user->email;
-        $this->role = $user->role;
+        $area = area::where('id', $id)->first();
+        $this->area_id = $id;
+        $this->nama_tempat = $area->nama_tempat;
     }
 
     public function cancel()
@@ -74,18 +67,16 @@ class Users extends Component
     public function update()
     {
         $validatedDate = $this->validate([
-            'name' => 'required',
-            'email' => 'required|email',
+            'nama_tempat' => 'required',
         ]);
 
-        if ($this->user_id) {
-            $user = User::find($this->user_id);
-            $user->update([
-                'name' => $this->name,
-                'email' => $this->email,
+        if ($this->area_id) {
+            $area = area::find($this->area_id);
+            $area->update([
+                'nama_tempat' => $this->nama_tempat,
             ]);
             $this->updateMode = false;
-            $this->peringatan('berhasil mengupdate user');
+            $this->peringatan('berhasil mengupdate area');
             $this->resetInputFields();
         }
     }
@@ -93,8 +84,8 @@ class Users extends Component
     public function delete($id)
     {
         if ($id) {
-            User::where('id', $id)->delete();
-            $this->peringatan('berhasil menghapus user');
+            area::where('id', $id)->delete();
+            $this->peringatan('berhasil menghapus area');
         }
     }
 }

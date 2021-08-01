@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
        <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">AREA</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -11,15 +11,10 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <input type="hidden" wire:model="user_id">
+                        <input type="hidden" wire:model="area_id">
                         <label for="exampleFormControlInput1">Name</label>
-                        <input type="text" class="form-control" wire:model="name" id="exampleFormControlInput1" placeholder="Enter Name">
-                        @error('name') <span class="text-danger">{{ $message }}</span>@enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlInput2">Email address</label>
-                        <input type="email" class="form-control" wire:model="email" id="exampleFormControlInput2" placeholder="Enter Email">
-                        @error('email') <span class="text-danger">{{ $message }}</span>@enderror
+                        <input type="text" class="form-control" wire:model="nama_tempat" id="exampleFormControlInput1" placeholder="Enter nama tempat">
+                        @error('nama_tempat') <span class="text-danger">{{ $message }}</span>@enderror
                     </div>
                 </form>
             </div>

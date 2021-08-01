@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Model\Customer;
+use Barryvdh\DomPDF\Facade as PDF;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
@@ -121,6 +122,10 @@ class CustomerController extends Controller
         $jam   = 3000 * (floor($diff / (60 * 60)));
         $menit = 100 * (floor(($diff - $jam * (60 * 60)) / 60));
         $hasil = $jam + $menit;
+        if ($hasil == 0) {
+            alert()->success('BUAT KAMU GRATIS DEH');
+            return back();
+        }
         alert()->success('BAYAR :' . $hasil);
         return back();
     }
