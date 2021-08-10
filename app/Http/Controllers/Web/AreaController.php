@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Area;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Laravolt\Indonesia\Models\Province;
 
 class AreaController extends Controller
 {
@@ -16,8 +17,10 @@ class AreaController extends Controller
     public function index()
     {
         $title = "AREA";
+        $provinces = Province::orderBy('name', 'asc')->get();
+
         // $user = User::paginate(10);
-        return view('aplication.pages.area.index', compact('title'));
+        return view('aplication.pages.area.index', compact('title','provinces'));
     }
 
     /**

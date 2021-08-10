@@ -125,8 +125,36 @@ class CustomerController extends Controller
         if ($hasil == 0) {
             alert()->success('BUAT KAMU GRATIS DEH');
             return back();
+            // $pdf = PDF::loadview('qrCode')->setPaper('A4','potrait');
+            // return $pdf->stream();
         }
         alert()->success('BAYAR :' . $hasil);
         return back();
     }
+    public function print($id)
+    {
+        $Customer = Customer::where('id', $id)->first();
+        if ($Customer->jam_keluar) {
+            alert()->error('Sudah Dibayar');
+            return back();
+        }
+        $Customer->jam_keluar = new DateTime();
+        $Customer->update();
+
+        $Customer = Customer::where('id', $id)->first();
+        $awal  = strtotime($Customer->jam_masuk);
+        $akhir = strtotime($Customer->jam_keluar);
+        $diff  = $akhir - $awal;
+        $jam   = 3000 * (floor($diff / (60 * 60)));
+        $menit = 100 * (floor(($diff - $jam * (60 * 60)) / 60));
+        $hasil = $jam + $menit;
+        $Data = $Customer;
+        if ($hasil == 0) {
+            // dd($data);
+            $pdf = PDF::loadview('qrCode', $Data)->setPaper(array(0,0,230,350),'potrait');
+            return $pdf->stream();
+        }
+        $pdf = PDF::loadview('qrCode', $Data)->setPaper(array(0,0,230,350),'potrait');
+        return $pdf->stream();
+        }
 }
